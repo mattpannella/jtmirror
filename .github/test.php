@@ -30,12 +30,12 @@ foreach ($subdirectories as $subdirectory) {
 
 function getReleaseDate($coreName)
 {
-    $file = "Cores/{$coreName}/core.json";
+    $file = "./Cores/{$coreName}/core.json";
     $json = file_get_contents($file);
 
     $core = json_decode($json,true);
-    if(!empty($data->core->metadata->date_release)) {
-        $d = $data->core->metadata->date_release;
+    if(!empty($core->core->metadata->date_release)) {
+        $d = $core->core->metadata->date_release;
         $date = date('Ymd', strtotime($d));
         
         return $date;
