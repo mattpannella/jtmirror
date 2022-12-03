@@ -21,7 +21,7 @@ foreach ($subdirectories as $subdirectory) {
     $command = "zip ../../{$coreName}.zip Platforms/_images/{$core}.bin";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip -f ../../{$coreName}.zip Assets/{$core}/*";
+    $command = "zip -r ../../{$coreName}.zip Assets/{$core}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
 }
