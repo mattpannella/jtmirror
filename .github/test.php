@@ -6,23 +6,40 @@ $dir = '.';
 $subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
+    $date = getDate($coreName);
+    $zipfile = "{$coreName}_{$date}.zip";
     echo "Zipping {$coreName}" . PHP_EOL;
-    $command = "zip ../../{$coreName}.zip Cores/{$coreName}/*";
+    $command = "zip ../../{$zipfile} Cores/{$coreName}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip -r ../../{$coreName}.zip Presets/{$coreName}/*";
+    $command = "zip -r ../../{$zipfile} Presets/{$coreName}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
     $names = explode('.', $coreName);
     $core = $names[1];
-    $command = "zip ../../{$coreName}.zip Platforms/{$core}.json";
+    $command = "zip ../../{$zipfile} Platforms/{$core}.json";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip ../../{$coreName}.zip Platforms/_images/{$core}.bin";
+    $command = "zip ../../{$zipfile} Platforms/_images/{$core}.bin";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip -r ../../{$coreName}.zip Assets/{$core}/*";
+    $command = "zip -r ../../{$zipfile} Assets/{$core}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
 }
- 
+
+function getDate($coreName)
+{
+    $file = "Cores/{$coreName}/core.json";
+    $json = file_get_contents($file);
+
+    $core = json_decode($json,true);
+    if(!empty($data->core->metadata->date_release)) {
+        $d = $data->core->metadata->date_release;
+        $date = date('Ymd', strtotime($d));
+        
+        return $date;
+    }
+    
+    return false;
+}
