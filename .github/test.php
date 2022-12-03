@@ -6,7 +6,7 @@ $dir = '.';
 $subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
-    $date = getDate($coreName);
+    $date = getReleaseDate($coreName);
     $zipfile = "{$coreName}_{$date}.zip";
     echo "Zipping {$coreName}" . PHP_EOL;
     $command = "zip ../../{$zipfile} Cores/{$coreName}/*";
@@ -28,7 +28,7 @@ foreach ($subdirectories as $subdirectory) {
     echo shell_exec($command);
 }
 
-function getDate($coreName)
+function getReleaseDate($coreName)
 {
     $file = "Cores/{$coreName}/core.json";
     $json = file_get_contents($file);
