@@ -6,7 +6,7 @@ $dir = '.';
 $subdirectories = glob($dir . '/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
-    echo "Zipping {$coreName}");
+    echo "Zipping {$coreName}";
     shell_exec("zip {$coreName}.zip Cores/{$coreName}/*");
     shell_exec("zip -r {$coreName}.zip Presets/{$coreName}/*");
     $names = explode('.', $coreName);
