@@ -27,4 +27,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: testing this thing
-          file_pattern: 'test.zip'
+          file_pattern: '*.zip'
