@@ -3,7 +3,7 @@
 chdir("jtbin/pocket");
 
 $dir = '.';
-$subdirectories = glob($dir . '/*', GLOB_ONLYDIR);
+$subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
     echo "Zipping {$coreName}";
