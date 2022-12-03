@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
       - name: Checkout Me
         uses: actions/checkout@v3
       - name: Checkout jt
@@ -18,9 +22,7 @@ jobs:
       - name: Shell
         shell: bash
         run: |
-          cd jtbin;
-          zip ../test.zip pocket/Cores/jotego.jtdd/*;
-          cd ..;
+          php -f .github/test.php
       - name: Commit 
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
