@@ -1,3 +1,5 @@
+name: make a zip
+run-name: ${{ github.actor }} is  doing someting
 on: 
   schedule:
     - cron:  '*/15 * * * *'
