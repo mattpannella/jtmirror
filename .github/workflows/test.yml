@@ -8,14 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Me
+        uses: actions/checkout@v3
+      - name: Checkout jt
         uses: actions/checkout@v3
         with:
           repository: mattpannella/jtbin
+          path: './jtbin'
       - name: Shell
         shell: bash
         run: |
-          zip test.zip pocket/Cores/jotego.jtdd/*;
+          cd jtbin;
+          zip ../test.zip pocket/Cores/jotego.jtdd/*;
+          cd ..;
       - name: Commit 
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
