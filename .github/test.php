@@ -1,6 +1,6 @@
 <?php
 
-chdir("pocket");
+chdir("jtbin/pocket");
 
 $dir = '.';
 $subdirectories = glob($dir . '/*', GLOB_ONLYDIR);
