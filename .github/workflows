@@ -1,0 +1,21 @@
+on: 
+  schedule:
+    # Run every 15 minutes
+    - cron:  '*/15 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: mattpannella/jtbin
+      - name: Shell
+        shell: bash
+        run: |
+          zip test.zip pocket/Cores/jotego.jtdd/*;
+      - name: Commit 
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: testing this thing
+        file_pattern: 'test.zip'
