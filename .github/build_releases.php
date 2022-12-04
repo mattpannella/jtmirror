@@ -2,13 +2,13 @@
 
 chdir("jtbin/pocket");
 
-$dir = '.';
+$dir = getcwd();
 $subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
     $date = getReleaseDate($coreName);
     $zipfile = "{$coreName}_{$date}.zip";
-    if(file_exists(dirname(__FILE__) . '/' . $zipfile)) {
+    if(file_exists("../../{$zipfile}")) {
         continue;
     }
     echo "Zipping {$coreName}" . PHP_EOL;
