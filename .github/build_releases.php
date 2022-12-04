@@ -8,6 +8,9 @@ foreach ($subdirectories as $subdirectory) {
     $coreName = basename($subdirectory);
     $date = getReleaseDate($coreName);
     $zipfile = "{$coreName}_{$date}.zip";
+    if(file_exists(dirname(__FILE__) . '/' . $zipfile)) {
+        continue;
+    }
     echo "Zipping {$coreName}" . PHP_EOL;
     $command = "zip ../../{$zipfile} Cores/{$coreName}/*";
     echo $command . PHP_EOL;

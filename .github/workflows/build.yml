@@ -1,8 +1,8 @@
-name: make a zip
+name: Build release zips
 run-name: ${{ github.actor }} is  doing someting
 on: 
-  #schedule:
-  #  - cron:  '*/15 * * * *'
+  schedule:
+    - cron:  '0 8 * * *'
   workflow_dispatch:
 jobs:
   build:
@@ -19,12 +19,12 @@ jobs:
         with:
           repository: mattpannella/jtbin
           path: './jtbin'
-      - name: Shell
+      - name: Run PHP script
         shell: bash
         run: |
-          php -f .github/test.php
-      - name: Commit 
+          php -f .github/build_releases.php
+      - name: Commit zips
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: testing this thing
+          commit_message: Updating releases
           file_pattern: '*.zip'
