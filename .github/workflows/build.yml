@@ -19,10 +19,11 @@ jobs:
         with:
           repository: mattpannella/jtbin
           path: './jtbin'
+          fetch-depth: '0'
       - name: Run PHP script
         shell: bash
         run: |
-          php -f .github/build_releases.php
+          php -f .github/build_releases_hash.php
       - name: Commit zips
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
