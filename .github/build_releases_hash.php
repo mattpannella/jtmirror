@@ -1,5 +1,5 @@
 <?php
-chdir("jtbin/pocket");
+chdir("jtbin/pocket/raw");
 
 $dir = getcwd();
 $subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
@@ -12,7 +12,7 @@ foreach ($subdirectories as $subdirectory) {
         continue;
     }
     echo "Deleting old {$core} zip";
-    exec("rm ../../{$core}_*.zip");
+    exec("rm ../../../{$core}_*.zip");
     updateVersion($core, $hash);
     echo "Building new zip";
 
