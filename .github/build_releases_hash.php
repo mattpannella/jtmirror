@@ -8,7 +8,7 @@ foreach ($subdirectories as $subdirectory) {
     $hash = getMostRecentHash($core);
     echo "The most recent hash for {$core} is {$hash}" . PHP_EOL;
     $zipfile = "{$core}_{$hash}.zip";
-    if(file_exists("../../{$zipfile}")) {
+    if(file_exists("../../../{$zipfile}")) {
         continue;
     }
     echo "Deleting old {$core} zip";
@@ -16,21 +16,21 @@ foreach ($subdirectories as $subdirectory) {
     updateVersion($core, $hash);
     echo "Building new zip";
 
-    $command = "zip ../../{$zipfile} Cores/{$core}/*";
+    $command = "zip ../../../{$zipfile} Cores/{$core}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip -r ../../{$zipfile} Presets/{$core}/*";
+    $command = "zip -r ../../../{$zipfile} Presets/{$core}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
     $names = explode('.', $core);
     $platform = $names[1];
-    $command = "zip ../../{$zipfile} Platforms/{$platform}.json";
+    $command = "zip ../../../{$zipfile} Platforms/{$platform}.json";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip ../../{$zipfile} Platforms/_images/{$platform}.bin";
+    $command = "zip ../../../{$zipfile} Platforms/_images/{$platform}.bin";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $command = "zip -r ../../{$zipfile} Assets/{$platform}/*";
+    $command = "zip -r ../../../{$zipfile} Assets/{$platform}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
 }
