@@ -15,7 +15,9 @@ const MAPPING = [
     'jtsbaskt' => 'Super Basketball',
     'jttrack' => "Track & Field",
     'jtvigil' => "Vigilante",
-    'jtyiear' => 'Yie Ar Kung-Fu'
+    'jtyiear' => 'Yie Ar Kung-Fu',
+    'jtoutrun' => 'Outrun',
+    'jtcps1' => 'CPS1'
 ];
 
 chdir("jtbin/pocket/raw");
