@@ -27,6 +27,8 @@ $subdirectories = glob($dir . '/Cores/*', GLOB_ONLYDIR);
 foreach ($subdirectories as $subdirectory) {
     $core = basename($subdirectory);
     $hash = getMostRecentHash($core);
+    $names = explode('.', $core);
+    $platform = $names[1];
     echo "The most recent hash for {$core} is {$hash}" . PHP_EOL;
     $zipfile = "{$core}_{$hash}.zip";
     if(file_exists("../../../{$zipfile}")) {
@@ -44,8 +46,6 @@ foreach ($subdirectories as $subdirectory) {
     $command = "zip -r ../../../{$zipfile} Presets/{$core}/*";
     echo $command . PHP_EOL;
     echo shell_exec($command);
-    $names = explode('.', $core);
-    $platform = $names[1];
     $command = "zip ../../../{$zipfile} Platforms/{$platform}.json";
     echo $command . PHP_EOL;
     echo shell_exec($command);
