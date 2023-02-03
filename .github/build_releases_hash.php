@@ -17,7 +17,8 @@ const MAPPING = [
     'jtvigil' => "Vigilante",
     'jtyiear' => 'Yie Ar Kung-Fu',
     'jtoutrun' => 'Outrun',
-    'jtcps1' => 'CPS1'
+    'jtcps1' => 'CPS1',
+    'jtkarnov' => 'Karnov'
 ];
 
 chdir("jtbin/pocket/raw");
