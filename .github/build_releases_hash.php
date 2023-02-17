@@ -19,6 +19,13 @@ const MAPPING = [
     'jtoutrun' => 'Outrun',
     'jtcps1' => 'CPS1',
     'jtkarnov' => 'Karnov'
+    'jtexed' => 'Exed Eyes',
+    'jtgunsmk' => 'Gun Smoke',
+    'jtarms' => 'Side Arms',
+    'jtsectnz' => 'Section Z',
+    'jtsf' => 'Street Fighter',
+    'jttrojan' => 'Trojan',
+    'jtvulgus' => 'Vulgus'
 ];
 
 chdir("jtbin/pocket/raw");
